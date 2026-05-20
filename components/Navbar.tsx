@@ -160,7 +160,8 @@ export default function Navbar() {
                   onChange={handleChange}
                   onFocus={() => setFocused(true)}
                   placeholder={tr("search_placeholder")}
-                  className="bg-black/90 border border-gray-500 text-white px-3 py-1.5 text-sm rounded outline-none focus:border-white w-52 md:w-72 transition-all"
+                  className="bg-black/90 border border-gray-500 text-white px-3 py-1.5 rounded outline-none focus:border-white w-52 md:w-72 transition-all"
+                  style={{ fontSize: "16px" }}
                 />
                 {loading && (
                   <div className="absolute right-2.5 top-1/2 -translate-y-1/2">
@@ -170,8 +171,8 @@ export default function Navbar() {
 
                 {/* Suggestions dropdown */}
                 {showDropdown && (
-                  <div className="absolute top-full mt-1 left-0 right-0 rounded-lg overflow-hidden shadow-2xl border border-gray-700"
-                    style={{ background: "#1a1a1a", minWidth: "280px" }}>
+                  <div className="absolute top-full mt-1 right-0 rounded-lg overflow-hidden shadow-2xl border border-gray-700"
+                    style={{ background: "#1a1a1a", width: "min(320px, 90vw)" }}>
                     {suggestions.map((s, i) => (
                       <button
                         key={s.id}
