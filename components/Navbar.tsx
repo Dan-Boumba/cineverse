@@ -147,7 +147,9 @@ export default function Navbar() {
               </svg>
             )}
           </button>
-          <LanguageSwitcher />
+          <div className="hidden md:block">
+            <LanguageSwitcher />
+          </div>
           {showSearch ? (
             <form onSubmit={handleSearch} className="flex items-center">
               <div className="relative">
@@ -243,18 +245,29 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile nav menu */}
+      {/* Mobile full-screen overlay */}
       {menuOpen && (
-        <div
-          className="md:hidden px-6 pb-4 pt-2"
-          style={{ background: "rgba(20,20,20,0.98)" }}
-        >
-          <div className="flex flex-col gap-1 text-sm text-gray-300">
-            <Link href="/" onClick={() => setMenuOpen(false)} className="py-2 hover:text-white transition-colors">{tr("home")}</Link>
-            <Link href="/movies" onClick={() => setMenuOpen(false)} className="py-2 hover:text-white transition-colors">{tr("movies")}</Link>
-            <Link href="/series" onClick={() => setMenuOpen(false)} className="py-2 hover:text-white transition-colors">{tr("series")}</Link>
-            <Link href="/streaming" onClick={() => setMenuOpen(false)} className="py-2 hover:text-white transition-colors">{tr("streaming")}</Link>
-            <Link href="/genres" onClick={() => setMenuOpen(false)} className="py-2 hover:text-white transition-colors">{tr("genres")}</Link>
+        <div className="fixed inset-0 flex flex-col md:hidden" style={{ background: "#141414" }}>
+          <div className="flex flex-col items-center justify-center flex-1 gap-8">
+            {[
+              { key: "home",      href: "/" },
+              { key: "movies",    href: "/movies" },
+              { key: "series",    href: "/series" },
+              { key: "streaming", href: "/streaming" },
+              { key: "genres",    href: "/genres" },
+            ].map(({ key, href }) => (
+              <Link
+                key={key}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="text-2xl font-semibold text-gray-300 hover:text-white transition-colors"
+              >
+                {tr(key)}
+              </Link>
+            ))}
+          </div>
+          <div className="flex justify-center pb-14">
+            <LanguageSwitcher />
           </div>
         </div>
       )}
