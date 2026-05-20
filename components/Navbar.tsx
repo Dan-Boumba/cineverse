@@ -248,6 +248,24 @@ export default function Navbar() {
       {/* Mobile full-screen overlay */}
       {menuOpen && (
         <div className="fixed inset-0 flex flex-col md:hidden" style={{ background: "#141414" }}>
+          {/* Top bar: logo + close */}
+          <div className="flex items-center justify-between px-6 py-4">
+            <Link href="/" onClick={() => setMenuOpen(false)}>
+              <span className="text-2xl font-black tracking-tight" style={{ color: "#e50914", letterSpacing: "-1px" }}>
+                CINEVERSE
+              </span>
+            </Link>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="text-gray-300 hover:text-white transition-colors p-1"
+              aria-label="Close menu"
+            >
+              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
           <div className="flex flex-col items-center justify-center flex-1 gap-8">
             {[
               { key: "home",      href: "/" },
