@@ -267,7 +267,7 @@ export default function Navbar() {
             ))}
           </div>
           <div className="flex justify-center pb-14">
-            <LanguageSwitcher />
+            <LanguageSwitcher upward />
           </div>
         </div>
       )}

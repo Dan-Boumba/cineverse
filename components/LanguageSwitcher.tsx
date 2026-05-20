@@ -9,7 +9,7 @@ const LANGUAGES = [
   { code: "fr" as const, label: "Français" },
 ];
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ upward = false }: { upward?: boolean }) {
   const lang = useLang();
   const [open, setOpen] = useState(false);
   const [pending, startTransition] = useTransition();
@@ -61,7 +61,7 @@ export default function LanguageSwitcher() {
 
       {open && (
         <div
-          className="absolute right-0 top-full mt-1 w-36 overflow-hidden shadow-2xl z-50"
+          className={`absolute right-0 w-36 overflow-hidden shadow-2xl z-50 ${upward ? "bottom-full mb-1" : "top-full mt-1"}`}
           style={{ background: "#000", border: "1px solid #555" }}
         >
           {LANGUAGES.map((l) => (
